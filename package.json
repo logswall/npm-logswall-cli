@@ -9,7 +9,7 @@
   "author": "Traian Cristian Cirstea",
   "license": "ISC",
   "bin": {
-    "logswall": "./bin/index.js"
+    "logswall": "./index.js"
   },
   "dependencies": {
     "logswall": "git+https://github.com/logswall/npm-logswall.git",
