@@ -1,0 +1,18 @@
+{
+  "name": "logswall-cli",
+  "version": "1.0.0",
+  "description": "CLI for logswall.com. Logs made easy!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Traian Cristian Cirstea",
+  "license": "ISC",
+  "bin": {
+    "logswall": "./bin/index.js"
+  },
+  "dependencies": {
+    "readline": "^1.3.0",
+    "yargs": "^15.3.1"
+  }
+}
