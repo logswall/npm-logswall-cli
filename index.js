@@ -2,7 +2,7 @@ const yargs = require("yargs");
 const fs = require('fs');
 const homedir = require('os').homedir();
 const readline = require('readline');
-const logswall = require('../npm-logswall');
+const logswall = require('logswall');
 
 const LOGSWALL_FOLDER = homedir + "/.logswall";
 const LOGSWALL_CONFIG_FILE = LOGSWALL_FOLDER + '/config.json';
@@ -23,23 +23,23 @@ if (configFileExists) {
 
 const options = yargs
     .usage("Usage: -p <project key> -q <queue key> [--set-default]")
-    .option("p", { alias: "project-key", describe: "Project key", type: "string", demandOption })
-    .option("q", { alias: "queue-key", describe: "Queue key", type: "string", demandOption })
+    .option("p", { alias: "key", describe: "Key", type: "string", demandOption })
+    .option("q", { alias: "queue", describe: "Queue", type: "string", demandOption })
     .option("d", { alias: "set-default", describe: "Set default project and queue", type: "boolean", demandOption: false })
     .argv;
 
-config.projectKey = options.projectKey || options.projectKey;
-config.queueKey = options.queueKey || options.queueKey;
+config.key = options.key || config.key;
+config.queue = options.queue || config.queue;
 
 if (options.setDefault) {
     if (!fs.existsSync(LOGSWALL_FOLDER)) {
         fs.mkdirSync(LOGSWALL_FOLDER);
     }
 
-    fs.writeFileSync(LOGSWALL_CONFIG_FILE, JSON.stringify({ projectKey: config.projectKey, queueKey: config.queueKey }), { mode: 0o755 });
+    fs.writeFileSync(LOGSWALL_CONFIG_FILE, JSON.stringify({ queue: config.queue, key: config.key }), { mode: 0o755 });
 }
 
-const $ = logswall.Console({ queueId: '4yztkJYKsJAL1m8xDt0Z', key: `${config.projectKey}:${config.queueKey}` });
+const $ = logswall.Console({ queue: config.queue, key: config.key });
 
 var rl = readline.createInterface({
     input: process.stdin,

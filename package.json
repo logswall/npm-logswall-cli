@@ -12,6 +12,7 @@
     "logswall": "./bin/index.js"
   },
   "dependencies": {
+    "logswall": "git+https://github.com/logswall/npm-logswall.git",
     "readline": "^1.3.0",
     "yargs": "^15.3.1"
   }
