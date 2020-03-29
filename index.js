@@ -12,7 +12,7 @@ const LOGSWALL_CONFIG_FILE = LOGSWALL_FOLDER + '/config.json';
 const configFileExists = fs.existsSync(LOGSWALL_CONFIG_FILE);
 const demandOption = !configFileExists;
 
-let config;
+let config = {};
 
 if (configFileExists) {
     try {
